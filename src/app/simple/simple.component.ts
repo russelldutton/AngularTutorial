@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimpleComponent implements OnInit {
 
+    counter = 0;
+    display = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  incrementCounter() {
+      this.counter += 1;
   }
 
 }

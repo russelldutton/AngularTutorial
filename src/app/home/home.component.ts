@@ -7,19 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-    title = 'Home';
-
-    links = [
-        {
-            text: 'Simple Component Example',
-            link: 'simple'
-        },
-        {
-            text: 'Nested Component Example',
-            link: 'nested'
-        }
-    ];
-
   constructor() { }
 
   ngOnInit() {

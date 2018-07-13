@@ -1,3 +1,35 @@
-<p>
-  simple works!
-</p>
+<div class="container mb-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="row d-flex justify-content-center">
+                <div>
+                    <p>Counter is currently at {{counter}}</p>
+                    <button type="button" class="btn btn-primary" (click)="incrementCounter()">Add to Counter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="row d-flex justify-content-center">
+                <div>
+                    <p *ngFor="let i of [1,2,3,4,5]">
+                        Number {{i}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="row d-flex justify-content-around">
+                <div>
+                    <p *ngIf="display">
+                        Can you see me?
+                    </p>
+                    <button type="button" class="btn btn-primary" (click)="display = !display">Toggle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

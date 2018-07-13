@@ -1,3 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<a routerLink="/">Home</a>
+<div style="text-align:center">
+    <h1>
+        Welcome to <a routerLink="">{{ title }}</a>!
+    </h1>
+</div>
+<div style="text-align: center">
+    <h2>Examples of the concepts covered</h2>
+</div>
+<ul class="inline-list d-flex justify-content-center">
+    <li *ngFor="let link of links" class="list-item"> 
+        <a class="button" routerLink="/{{link.link}}">{{link.text}}</a>
+    </li>
+</ul>
 <router-outlet></router-outlet>

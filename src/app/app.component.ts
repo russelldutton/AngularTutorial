@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Home';
+
+  links = [
+        {
+            text: 'Simple Component Example',
+            link: 'simple'
+        },
+        {
+            text: 'Nested Component Example',
+            link: 'nested'
+        },
+        {
+            text: 'Http Example',
+            link: 'http'
+        }
+    ];
 }
