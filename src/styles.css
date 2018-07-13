@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.inline-list {
+    list-style: none;
+}
+
+.list-item {
+    border: 1pt solid grey;
+    padding: 10px;
+    margin: 10px;
+}
