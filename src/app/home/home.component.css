@@ -1,0 +1,16 @@
+.center-block {
+    margin: 10px;
+    padding: 5px;
+    width: 100%;
+    display: block;
+}
+
+.inline-list {
+    list-style: none;
+}
+
+.list-item {
+    border: 1pt solid grey;
+    padding: 10px;
+    margin: 10px;
+}
