@@ -27,13 +27,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 
-# THE TUTORIAL
-
 # Intro to Angular
 - What is Angular & What you need to know
 - Architecture of Vanilla vs. Angular
 - Routing
 - Components in Detail
+  - Structure of the Component
+  - Data-binding
+  - Rendering
+  - Parent-Child Communication
 - Server Communication in Angular
 
 ## What is Angular
@@ -71,12 +73,12 @@ A View (or component) can also be made up of other Views (components) within its
 It is best practise to keep a component's _Scope_ to one idea or aspect of the webpage. This reduces Component Complexity and makes it easier to identify where code should and shouldn't go. Ideally, a component exists to enable the user's experience.
 Example, viewing a YouTube video. The left navigation pane could be a component, the navigation bar across the top of the screen, the main area for the video can be split into the actual video and related information, the comments and the up next section. And of course, the entire page is a component, the root component.
 
-In the Typescript file where the component is defined, any View-related funcitonality is also defined here along with any data models needed for enriching the View with data-binding. We'll touch on data-binding in a bit. 
+In the Typescript file where the component is defined, any View-related functionality is also defined here along with any data models needed for enriching the View with data-binding. We'll touch on data-binding in a bit. 
 
 ### Services
 A **Service** is basically a class that has a specific purpose, usually to transport and possibly manipulate data. It should do one thing and do it well. An example is a service to retrieve information from a server, or a method of transporting data from one component to another one. Any functionality that is not View-Related should be defined in a Service.
 
-A term you will hear a lot associated with Services is the term Dependency Injection, or DI for short. This is just the way in which services are imported and provided to components, which is different to a more traditional import statement. DI is a built in Angular feature that has a couple extra steps necessary to reduce runtime load. Basically, the process is to register the Service with Angular's Injector, then in whichever component the service is necessary you follow the Injection syntax for Angular (constructor parameter) and you are then able to use it as if it were a part of the component. The other extra steps are handled by Angular. Just know that you can specify where a service should be allowed to be used, and Angular will manage the access and creation of the service.
+A term you will hear a lot associated with Services is the term Dependency Injection, or DI for short. This is just the way in which services are imported and provided to components, which is different to a more traditional import statement. DI is a built in Angular feature that has a couple extra steps necessary to reduce runtime load. Basically, the process is to register the Service with Angular's Injector, then in whichever component the service is necessary you follow the Injection syntax for Angular (constructor parameter) and you are then able to use it as if it were a part of the component. The other extra steps are handled by Angular. Just know that you can specify where a service should be allowed to be used, and Angular will manage the access and creation of the service. Also only keep one instance alive at a time.
 
 ## Navigation among pages
 Ok so we can have one web page that works nicely and has multiple components, but what if we need to have more than one page? You can guess that another page would need at least one other component, but how do we access it? If you link to the html, how do you include the associated Typescript and CSS? The answer: use Routing.
@@ -96,18 +98,33 @@ The View of a Component is defined in its accompanying template. The template, w
 What's really cool about Angular is the way it is able to transform web pages into dynamic and reactive web applications. It does this through many things, two of which are important here: namely Data-Binding and Directives.
 
 #### Data-binding
-In vanilla Javascript, if you wanted to update an HTML element if a value, or a property, in the logic changed, you would have to manually alter the DOM and this usually meant you had element ids that felt like they never ended. Similarly, if any event happened on the web page, you had to manually define a listener for the event to update any properties in the logic of the page.
+In vanilla Javascript, if you wanted to update an HTML element if a value, or a property, in the logic changed, you would have to manually alter the DOM and this usually meant you had a list of element ids that felt like it never ended. Similarly, if any event happened on the web page, you had to manually define a listener for the event to update any properties in the logic of the page.
 
 Data-Binding makes this far easier for you, and is simply linking an HTML element to a property or function in the Component Logic. Data-binding can be one-way, or two-way. Property binding is binding a property in the logic to an element in the HTML, so that if the property updates in the background, the change is immediately reflected in the application. Event binding is (almost) the reverse: if an event happens in the HTML, it triggers a function in the logic. Two-way data binding binds a property to an element in the HTML, so that any changes in either the HTML or the logic will cause the other to immediately update. We'll cover code examples of this after lunch.
 
 #### Directives
-Directives issue instructions to Angular to transform the DOM by altering the layout, appearance and behaviour of elements in the page. You can conditionally render an element, or iteratively generate them with structural directives, or modify behaviour/appearance of an element with attribute directives.
+Directives issue instructions to Angular to transform the DOM by altering the layout, appearance and behaviour of elements in the page. 
+
+Right now just understand that there are two types with two intentions:
+- You can conditionally render an element, or iteratively generate them with structural directives, or
+- Modify behaviour/appearance of an element with attribute directives.
 
 #### Rendering
 Ok, one thing you've probably forgotten you wanted to ask, or perhaps didn't know you wanted to ask: how do you tell Angular where you want a Component rendered on the page? With a custom HTML tag, or _selector_. The Selector of a Component is defined in the metadata of the Component, in the Typescript, but it is used in the HTML of another Component. The first example you will see is when you generate an Angular Application for the first time and you will see `<app-root>` in the `<body>` tag of the index.html of the project. This tag tells Angular to render the root component in the body tag, essentially taking up the whole page. You can only have one root component for an application, and all other components need to be defined in this root component's HTML or in the HTML of other components.
 
+#### Parent-Child Communication
+Alright say we're some way through our development, we have several components and it's looking fantastic. If we want to allow communication between components, we will likely have some services in place that perform the necessary functions. However, if we have a component hierarchy somewhere with a parent-child relationship, there is an additional way of allowing communication between the two to save some coding and reduce complexity.
+
+Since you can view the relationship between a parent component and a child component as more intimate than other components (just like real life) it makes sense that they know more about each other than they do about other components. For this reason, there are two additional methods of communication available to use: Input binding and Event Listening.
+
+Input binding creates a variable in the child component and expects a variable from the parent component. It will throw an error if it doesn't get it. Also, any changes in variable in the parent component will pass down to the child component.
+
+Event listening happens in the parent component, and when the child wishes to pass data to the parent it _Emits_ an Event that the parent is listening for. When the parent hears the event, it performs whatever functionality you've defined.
+
 ## Server Communication in Angular
-In a traditional, vanilla application, communication to a server is done through AJAX using GET, POST and PUT requests. It can be quite cumbersome, and sometimes quite confusing as to what is happening when.
+In a traditional, vanilla application, communication to a server is done through AJAX using HTTP requests (GET, POST, PUT, etc). It can be quite cumbersome, and sometimes quite confusing as to what is happening when. Angular provides a simplified client for this communication called the HttpClient. Any type of request you'd like to make is available as a function, so it's as simple as .get() to retrieve information from a server.
+
+However, this is Asynchronous programming, so what will happen is the request will be sent, and the code will continue to execute without waiting for the response. In order to receive the response and do something with the data, you need a callback function, which is just a function that executes once the response returns. In Angular, the return type is an Observable, and all you need to do is subscribe to the request. This method also contains the data returned by the request, so you can access it inside the method. Examples will be shown in the next session.
 
 
 
