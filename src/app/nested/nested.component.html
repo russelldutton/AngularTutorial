@@ -1,3 +1,27 @@
-<p>
-  nested works!
-</p>
+<div class="container mb-5">
+    <div class="row parent">
+        <div class="col-md-12 d-flex justify-content-around">
+            <p>First is {{first}}</p>
+            <p>Second is {{second}}</p>
+            <p>Third is {{third}}</p>
+        </div>
+        <div class="col-md-12 d-flex justify-content-around">
+            <button type="button" class="btn btn-success" (click)="firstCounter = firstCounter + 1">First + 1</button>
+            <button type="button" class="btn btn-success" (click)="secondCounter = secondCounter + 1">Second + 1</button>
+            <button type="button" class="btn btn-success" (click)="thirdCounter = thirdCounter + 1">Third + 1</button>
+        </div>
+    </div>
+    <div class="row mb-20">
+        <div class="col-md-6">
+            <app-first [counter]="firstCounter" (wake)="onWake($event)"></app-first>
+        </div>
+        <div class="col-md-6">
+            <app-second [counter]="secondCounter" (watch)="onWatch($event)"></app-second>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-20">
+            <app-third [counter]="thirdCounter" (walkEvent)="onWalk($event)"></app-third>
+        </div>
+    </div>
+</div>
