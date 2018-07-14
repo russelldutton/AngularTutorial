@@ -10,6 +10,7 @@ import { SecondComponent } from './nested/second/second.component';
 import { ThirdComponent } from './nested/third/third.component';
 import { HttpComponent } from './http/http.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BootcampComponent } from './bootcamp/bootcamp.component';
 
 const appRoutes: Routes = [
     {
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     FirstComponent,
     SecondComponent,
     ThirdComponent,
-    HttpComponent
+    HttpComponent,
+    BootcampComponent
   ],
   imports: [
     BrowserModule,
