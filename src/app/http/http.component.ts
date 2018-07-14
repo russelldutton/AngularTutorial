@@ -17,7 +17,7 @@ export class HttpComponent implements OnInit {
   }
 
   showTitle() {
-      this.api.getRedditTitle().subscribe( (data) => this.redditTitle = data['data']['children'][0]['data']['title']);
+      this.api.getRedditTitle().subscribe( (data) => this.redditTitle = data['data']['children'][3]['data']['title']);
   }
 
 }
