@@ -9,6 +9,7 @@ export class SimpleComponent implements OnInit {
 
     counter = 0;
     display = true;
+    array = [1,2,3,4,5,6,7,8,9,10];
 
   constructor() { }
 
@@ -16,7 +17,7 @@ export class SimpleComponent implements OnInit {
   }
 
   incrementCounter() {
-      this.counter += 1;
+      this.counter = this.counter + 1;
   }
 
 }

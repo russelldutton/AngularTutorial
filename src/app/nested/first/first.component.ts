@@ -16,7 +16,6 @@ export class FirstComponent implements OnInit {
 
   wakeUp() {
       this.wake.emit('awake');
-      console.log('wake');
   }
 
 }
