@@ -126,6 +126,9 @@ In a traditional, vanilla application, communication to a server is done through
 
 However, this is Asynchronous programming, so what will happen is the request will be sent, and the code will continue to execute without waiting for the response. In order to receive the response and do something with the data, you need a callback function, which is just a function that executes once the response returns. In Angular, the return type is an Observable, and all you need to do is subscribe to the request. This method also contains the data returned by the request, so you can access it inside the method. Examples will be shown in the next session.
 
+## Git and Github
+### Concept of Version Control
+- Track changes made in a code project. Helps for collaboration
 
 
 ## Great Resources
