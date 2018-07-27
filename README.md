@@ -68,7 +68,7 @@ A **Component** is a section on a webpage that you see, and may contain the nece
 (When generating a component through Angular, a fourth file will be generated, in Typescript, with a .spec.ts extension. This file is used to define any tests for the component, and is not used in a build. More on Builds later.)
 
 A View (or component) can also be made up of other Views (components) within itself, introducing a Parent-Child relationship. Every application needs at least one component, called the root component, upon which the rest of the application is built.
-\[Image illustrating how a webpage can consist of views which can consist of other views.]
+![Image illustrating how a webpage can consist of views which can consist of other views.](images/ComponentHierarchy.png)
 
 It is best practise to keep a component's _Scope_ to one idea or aspect of the webpage. This reduces Component Complexity and makes it easier to identify where code should and shouldn't go. Ideally, a component exists to enable the user's experience.
 Example, viewing a YouTube video. The left navigation pane could be a component, the navigation bar across the top of the screen, the main area for the video can be split into the actual video and related information, the comments and the up next section. And of course, the entire page is a component, the root component.
@@ -128,7 +128,37 @@ However, this is Asynchronous programming, so what will happen is the request wi
 
 ## Git and Github
 ### Concept of Version Control
-- Track changes made in a code project. Helps for collaboration
+- Track changes made in a code project
+- Collaboration between team members
+- Code review between team members
+
+### How does Git work?
+
+Git is a data structure that resides inside a code project that keeps track of the incremental changes made to said project. If a project has been _initialised_ with git then the tracking information can be found in the .git folder in the root folder of the project. An initialised git project is also called a repository, or repo for short.
+
+### Features of Git
+
+Git makes use of branches to track states in a project. So, a project can have many branches and thus many states where each state has different code that has been tracked. When two branches' histories need to be combined, a **merge** takes place, copying the history of the **target** branch onto the **base** branch.
+
+A change made in the code which has been tracked has been **committed** to the code history. A commit is a reference to a certain place in time within the history of a branch.
+
+A copy of the repository can be stored online with platforms such as Github and Gitlab to make collaboration easier, and is called a **remote**.
+
+### Gitflow
+
+Git flow is a way of using git. It is not a standard, but more of a set of generally accepted practices. The premise is that you have two main branches in your repo: Master and Dev, used for production ready and deployed code (Master) and code being prepared to be deployed (Dev). The dev branch stems from master, so it has the same history as master and more, and when code is ready to be deployed the branch is then merged into master. From dev, any new features that need to be developed are done in their own branches, and merged into dev once they are complete.
+
+The idea is that no development aside from hotfixes and other emergencies are done in master to keep it clean and safe, and also to enforce code review once a feature has been completed. An example is shown below.
+
+![Gitflow example](images/GitBranches.png)
+
+### Synchronising with online repo
+
+To copy changes made locally to the online version, a **push** needs to happen. The reverse is called a **pull**. It is also possible to have branches created locally that don't exist on the remote, and vice versa.
+
+It is important to consistently pull changes from the remote before you begin working on your branch if more people are also working on the same branch to ensure the branch on your machine is the latest version. Conversely, push changes frequently to ensure team-members have your changes.
+
+
 
 
 ## Great Resources
